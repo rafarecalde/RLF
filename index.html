@@ -8,189 +8,180 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
 :root {
   --ink: #0e0e0e; --parchment: #f5f2ec; --gold: #b8973a;
-  --gold-light: #d4b96a; --cream: #faf8f4; --mid: #5e5955; --rule: #d6d0c4;
+  --gold-light: #d4b96a; --cream: #faf8f4; --mid: #6b6560; --rule: #d6d0c4;
   --serif: Georgia, 'Times New Roman', serif;
-  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--cream); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 64px; background: rgba(250,248,244,0.98); border-bottom: 1px solid var(–rule); }
-.nav-logo { font-family: var(–serif); font-size: 1.05rem; font-weight: bold; letter-spacing: .1em; text-transform: uppercase; color: var(–ink); text-decoration: none; }
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 56px; background: rgba(250,248,244,0.98); border-bottom: 1px solid var(–rule); }
+.nav-logo { font-family: var(–serif); font-size: 1.1rem; font-weight: bold; letter-spacing: .09em; text-transform: uppercase; color: var(–ink) !important; }
 .nav-logo span { color: var(–gold); }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(–mid); text-decoration: none; font-weight: 600; transition: color .2s; }
-.nav-links a:hover { color: var(–gold); }
-.nav-cta { font-size: .63rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(–ink); text-decoration: none; border: 1.5px solid var(–ink); padding: 8px 20px; transition: all .2s; }
-.nav-cta:hover { background: var(–ink); color: var(–cream); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(–mid) !important; font-weight: 600; }
+.nav-links a:hover { color: var(–gold) !important; }
+.nav-cta { font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(–ink) !important; border: 1.5px solid var(–ink); padding: 9px 20px; }
+.nav-cta:hover { background: var(–ink); color: var(–cream) !important; }
 
 /* HERO */
-.hero { display: grid; grid-template-columns: 1fr 1fr; height: 100vh; padding-top: 64px; }
-.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 64px 52px 64px 56px; }
-.eyebrow { font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 64px; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 72px 52px; }
+.eyebrow { font-size: .62rem; letter-spacing: .26em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 22px; display: flex; align-items: center; gap: 12px; }
 .eyebrow::before { content: ‘’; width: 26px; height: 1px; background: var(–gold); flex-shrink: 0; }
-h1 { font-family: var(–serif); font-size: clamp(2.4rem, 3.8vw, 4.4rem); font-weight: normal; line-height: 1.12; color: var(–ink); margin-bottom: 28px; letter-spacing: -.01em; }
+h1 { font-family: var(–serif); font-size: clamp(2.6rem, 4vw, 4.8rem); font-weight: normal; line-height: 1.1; color: var(–ink); margin-bottom: 26px; }
 h1 em { font-style: italic; color: var(–gold); }
-.hero-desc { font-size: .875rem; line-height: 1.85; color: var(–mid); max-width: 400px; margin-bottom: 40px; }
-.hero-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.btn-primary { display: inline-block; background: var(–ink); color: var(–cream); font-size: .63rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; padding: 14px 30px; text-decoration: none; transition: background .2s; }
+.hero-desc { font-size: .84rem; line-height: 1.9; color: var(–mid); max-width: 420px; margin-bottom: 42px; }
+.hero-actions { display: flex; gap: 16px; align-items: flex-start; flex-direction: column; }
+.btn-primary { display: inline-block; background: var(–ink); color: var(–cream) !important; font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; padding: 15px 32px; }
 .btn-primary:hover { background: var(–gold); }
-.btn-ghost { font-size: .63rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(–mid); text-decoration: none; border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color .2s, border-color .2s; }
-.btn-ghost:hover { color: var(–gold); border-color: var(–gold); }
-.hero-right { background: #171410; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.hero-bg { position: absolute; font-family: var(–serif); font-size: 20vw; font-weight: bold; color: rgba(255,255,255,.022); top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none; user-select: none; }
-.hero-quote-box { padding: 48px 48px 110px; position: relative; z-index: 2; text-align: center; }
-.gold-bar { width: 36px; height: 1px; background: var(–gold); margin: 0 auto 28px; }
-.hero-quote-box blockquote { font-family: var(–serif); font-size: clamp(1.05rem, 1.8vw, 1.75rem); font-style: italic; color: #f0ede7; line-height: 1.65; margin-bottom: 24px; }
-.hero-quote-box cite { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(–gold); font-style: normal; font-weight: 600; }
+.btn-ghost { font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(–mid) !important; border-bottom: 1px solid var(–rule); padding-bottom: 2px; }
+.btn-ghost:hover { color: var(–gold) !important; border-color: var(–gold); }
+.hero-right { background: #171410; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero-bg { position: absolute; font-family: var(–serif); font-size: 22vw; font-weight: bold; color: rgba(255,255,255,0.025); top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none; }
+.hero-quote-box { padding: 48px; position: relative; z-index: 2; text-align: center; }
+.gold-bar { width: 38px; height: 1px; background: var(–gold); margin: 0 auto 26px; }
+.hero-quote-box blockquote { font-family: var(–serif); font-size: clamp(1.1rem, 1.9vw, 1.85rem); font-style: italic; color: #f5f2ec; line-height: 1.6; margin-bottom: 22px; }
+.hero-quote-box cite { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(–gold); font-style: normal; font-weight: 600; }
 .stat-strip { position: absolute; bottom: 0; left: 0; right: 0; display: flex; border-top: 1px solid rgba(184,151,58,.18); }
-.stat-item { flex: 1; padding: 18px 8px; text-align: center; border-right: 1px solid rgba(184,151,58,.18); }
+.stat-item { flex: 1; padding: 18px 10px; text-align: center; border-right: 1px solid rgba(184,151,58,.18); }
 .stat-item:last-child { border-right: none; }
-.stat-num { display: block; font-family: var(–serif); font-size: 1.75rem; color: var(–gold-light); line-height: 1; margin-bottom: 5px; }
-.stat-lbl { font-size: .48rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(245,242,236,.35); font-weight: 600; }
+.stat-num { display: block; font-family: var(–serif); font-size: 1.8rem; color: var(–gold-light); }
+.stat-lbl { font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,242,236,.38); font-weight: 600; }
 
 /* TICKER */
-.ticker { background: var(–ink); padding: 12px 0; overflow: hidden; white-space: nowrap; }
-.ticker-track { display: inline-block; animation: roll 34s linear infinite; }
-.t-item { display: inline-block; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(245,242,236,.36); padding: 0 30px; font-weight: 600; }
-.t-dot { color: var(–gold); margin-right: 4px; }
+.ticker { background: var(–ink); padding: 13px 0; overflow: hidden; }
+.ticker-track { display: inline-block; white-space: nowrap; animation: roll 32s linear infinite; }
+.t-item { display: inline-block; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,242,236,.38); padding: 0 32px; font-weight: 600; }
+.t-dot { color: var(–gold); }
 @keyframes roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* SHARED */
-section { padding: 96px 56px; }
-.inner { max-width: 1140px; margin: 0 auto; }
-.sec-tag { font-size: .58rem; letter-spacing: .28em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-.sec-tag::after { content: ‘’; width: 28px; height: 1px; background: var(–gold); }
-h2 { font-family: var(–serif); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: normal; color: var(–ink); line-height: 1.2; margin-bottom: 0; letter-spacing: -.01em; }
-.gold-rule { width: 34px; height: 2px; background: var(–gold); margin: 20px 0 32px; }
-
-/* SCROLL REVEAL */
-.sr { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-.sr.on { opacity: 1; transform: translateY(0); }
-.d1 { transition-delay: .1s; }
-.d2 { transition-delay: .2s; }
-.d3 { transition-delay: .3s; }
+section { padding: 92px 56px; }
+.inner { max-width: 1160px; margin: 0 auto; }
+.sec-tag { font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+.sec-tag::after { content: ‘’; width: 30px; height: 1px; background: var(–gold); }
+h2 { font-family: var(–serif); font-size: clamp(1.9rem, 2.8vw, 2.9rem); font-weight: normal; color: var(–ink); line-height: 1.2; margin-bottom: 16px; }
+.gold-rule { width: 36px; height: 2px; background: var(–gold); margin: 18px 0 28px; }
 
 /* ABOUT */
 .about { background: var(–parchment); }
-.about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: start; }
-.about-text p { font-size: .875rem; line-height: 2; color: var(–mid); margin-bottom: 18px; }
-.about-text strong { color: var(–ink); font-weight: 700; }
-.quote-card { background: var(–ink); padding: 44px; position: relative; overflow: hidden; margin-top: 52px; }
-.quote-card::before { content: ‘\201C’; font-family: var(–serif); font-size: 10rem; color: rgba(184,151,58,.08); position: absolute; top: -20px; left: 16px; line-height: 1; pointer-events: none; }
-.quote-card blockquote { font-family: var(–serif); font-size: 1.2rem; font-style: italic; color: var(–parchment); line-height: 1.72; margin-bottom: 22px; position: relative; z-index: 1; }
-.quote-card cite { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(–gold); font-style: normal; font-weight: 600; position: relative; z-index: 1; display: block; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.about p { font-size: .84rem; line-height: 1.95; color: var(–mid); margin-bottom: 16px; }
+.about strong { color: var(–ink); font-weight: 700; }
+.quote-card { background: var(–ink); padding: 44px; position: relative; overflow: hidden; margin-top: 56px; }
+.quote-card::before { content: ‘\201C’; font-family: var(–serif); font-size: 11rem; color: rgba(184,151,58,.07); position: absolute; top: -28px; left: 16px; line-height: 1; pointer-events: none; }
+.quote-card blockquote { font-family: var(–serif); font-size: 1.22rem; font-style: italic; color: var(–parchment); line-height: 1.7; margin-bottom: 20px; position: relative; z-index: 1; }
+.quote-card cite { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(–gold); font-style: normal; font-weight: 600; position: relative; z-index: 1; display: block; }
 
 /* PRACTICE */
 .practice { background: var(–cream); }
-.practice-hdr { margin-bottom: 48px; }
-.practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-.pc { background: var(–parchment); padding: 40px 32px 36px; position: relative; overflow: hidden; border-bottom: 3px solid transparent; transition: background .3s, border-color .3s; }
+.practice-hdr { margin-bottom: 44px; }
+.practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.pc { background: var(–parchment); padding: 42px 34px; position: relative; overflow: hidden; border-bottom: 3px solid transparent; transition: background .3s, border-color .3s; }
 .pc:hover { background: var(–ink); border-bottom-color: var(–gold); }
-.pc-n { position: absolute; top: 10px; right: 14px; font-family: var(–serif); font-size: 4.2rem; font-weight: bold; color: rgba(14,14,14,.05); line-height: 1; pointer-events: none; transition: color .3s; }
-.pc:hover .pc-n { color: rgba(255,255,255,.04); }
-.pc-title { font-family: var(–serif); font-size: 1.38rem; color: var(–ink); margin-bottom: 12px; line-height: 1.3; position: relative; z-index: 1; transition: color .3s; }
+.pc-n { position: absolute; top: 12px; right: 14px; font-family: var(–serif); font-size: 4.5rem; font-weight: bold; color: rgba(14,14,14,.05); line-height: 1; transition: color .3s; }
+.pc:hover .pc-n { color: rgba(245,242,236,.04); }
+.pc-title { font-family: var(–serif); font-size: 1.42rem; color: var(–ink); margin-bottom: 12px; line-height: 1.3; position: relative; z-index: 1; transition: color .3s; }
 .pc:hover .pc-title { color: var(–parchment); }
-.pc-desc { font-size: .75rem; line-height: 1.85; color: var(–mid); margin-bottom: 20px; position: relative; z-index: 1; transition: color .3s; }
+.pc-desc { font-size: .74rem; line-height: 1.85; color: var(–mid); margin-bottom: 18px; position: relative; z-index: 1; transition: color .3s; }
 .pc:hover .pc-desc { color: rgba(245,242,236,.5); }
-.pc-list { list-style: none; margin-bottom: 28px; position: relative; z-index: 1; }
-.pc-list li { font-size: .7rem; color: var(–mid); padding: 6px 0; border-top: 1px solid var(–rule); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; transition: color .3s, border-color .3s; }
-.pc:hover .pc-list li { color: rgba(245,242,236,.46); border-color: rgba(184,151,58,.1); }
-.pc-list li::before { content: ‘—’; color: var(–gold); flex-shrink: 0; font-size: .65rem; margin-top: 1px; }
-.pc-more { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(–gold); font-weight: 600; position: relative; z-index: 1; }
+.pc-list { margin-bottom: 26px; position: relative; z-index: 1; }
+.pc-list li { font-size: .69rem; color: var(–mid); padding: 5px 0; border-top: 1px solid var(–rule); display: flex; align-items: flex-start; gap: 8px; transition: color .3s, border-color .3s; }
+.pc:hover .pc-list li { color: rgba(245,242,236,.48); border-color: rgba(184,151,58,.12); }
+.pc-list li::before { content: ‘—’; color: var(–gold); flex-shrink: 0; }
+.pc-more { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(–gold); font-weight: 600; position: relative; z-index: 1; }
 
 /* APPROACH */
 .approach { background: var(–ink); }
 .approach .sec-tag { color: var(–gold-light); }
 .approach .sec-tag::after { background: var(–gold-light); }
 .approach h2 { color: var(–parchment); }
-.approach-lead { font-family: var(–serif); font-size: clamp(1.1rem, 1.8vw, 1.75rem); font-style: italic; color: rgba(245,242,236,.7); line-height: 1.65; max-width: 720px; margin: 24px 0 60px; }
-.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-.pillar { background: #1a1714; padding: 36px 24px; border-top: 2px solid rgba(184,151,58,.14); transition: border-color .3s, background .3s; }
-.pillar:hover { border-top-color: var(–gold); background: #1f1c18; }
-.pillar-ico { width: 34px; height: 34px; margin-bottom: 22px; border: 1px solid rgba(184,151,58,.28); display: flex; align-items: center; justify-content: center; font-size: .9rem; }
-.pillar h3 { font-family: var(–serif); font-size: 1.1rem; color: var(–parchment); margin-bottom: 12px; line-height: 1.3; }
-.pillar p { font-size: .74rem; line-height: 1.85; color: rgba(245,242,236,.4); }
+.approach-lead { font-family: var(–serif); font-size: clamp(1.15rem, 1.9vw, 1.8rem); font-style: italic; color: rgba(245,242,236,.72); line-height: 1.6; max-width: 740px; margin-bottom: 56px; }
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(184,151,58,.1); }
+.pillar { background: var(–ink); padding: 38px 26px; border-top: 2px solid rgba(184,151,58,.15); transition: border-color .3s; }
+.pillar:hover { border-top-color: var(–gold); }
+.pillar-ico { width: 34px; height: 34px; margin-bottom: 22px; border: 1px solid rgba(184,151,58,.3); display: flex; align-items: center; justify-content: center; font-size: .95rem; color: var(–gold); }
+.pillar h3 { font-family: var(–serif); font-size: 1.12rem; color: var(–parchment) !important; margin-bottom: 10px; }
+.pillar p { font-size: .73rem; line-height: 1.85; color: rgba(245,242,236,.5) !important; }
 
 /* INSIGHTS */
 .insights { background: var(–parchment); }
-.ins-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 44px; gap: 16px; flex-wrap: wrap; }
-.ins-hdr a { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(–gold); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(–gold); padding-bottom: 2px; }
-.ins-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3px; }
-.ins-card { background: var(–cream); padding: 36px; transition: background .25s; }
+.ins-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 14px; }
+.ins-hdr a { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(–gold) !important; font-weight: 600; border-bottom: 1px solid var(–gold); padding-bottom: 2px; }
+.ins-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2px; }
+.ins-card { background: var(–cream); padding: 38px; transition: background .25s; }
 .ins-card.feat { padding: 44px; }
 .ins-card:hover { background: var(–ink); }
-.ins-cat { font-size: .54rem; letter-spacing: .24em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-.ins-cat::before { content: ‘’; width: 14px; height: 1px; background: var(–gold); flex-shrink: 0; }
-.ins-title { font-family: var(–serif); font-size: 1.18rem; color: var(–ink); line-height: 1.38; margin-bottom: 14px; transition: color .25s; }
-.ins-card.feat .ins-title { font-size: 1.55rem; }
+.ins-cat { font-size: .56rem; letter-spacing: .22em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.ins-cat::before { content: ‘’; width: 14px; height: 1px; background: var(–gold); }
+.ins-title { font-family: var(–serif); font-size: 1.2rem; color: var(–ink); line-height: 1.4; margin-bottom: 12px; transition: color .25s; }
+.ins-card.feat .ins-title { font-size: 1.6rem; }
 .ins-card:hover .ins-title { color: var(–parchment); }
-.ins-blurb { font-size: .775rem; line-height: 1.8; color: var(–mid); margin-bottom: 22px; transition: color .25s; }
-.ins-card:hover .ins-blurb { color: rgba(245,242,236,.45); }
-.ins-meta { font-size: .57rem; letter-spacing: .1em; text-transform: uppercase; color: var(–mid); font-weight: 600; transition: color .25s; }
-.ins-card:hover .ins-meta { color: rgba(245,242,236,.35); }
+.ins-blurb { font-size: .75rem; line-height: 1.8; color: var(–mid); margin-bottom: 20px; transition: color .25s; }
+.ins-card:hover .ins-blurb { color: rgba(245,242,236,.46); }
+.ins-meta { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(–mid); font-weight: 600; transition: color .25s; }
+.ins-card:hover .ins-meta { color: rgba(245,242,236,.36); }
 
 /* CONTACT */
 .contact { background: var(–cream); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; }
-.contact-left > p { font-size: .875rem; line-height: 1.9; color: var(–mid); margin-bottom: 36px; }
-.cdetail { display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(–rule); }
-.cico { width: 32px; height: 32px; flex-shrink: 0; border: 1px solid var(–rule); display: flex; align-items: center; justify-content: center; font-size: .85rem; }
-.cd-lbl { font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 4px; }
-.cd-val { font-size: .82rem; color: var(–ink); line-height: 1.5; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-left p { font-size: .84rem; line-height: 1.9; color: var(–mid); margin-bottom: 34px; }
+.cdetail { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(–rule); }
+.cico { width: 30px; height: 30px; flex-shrink: 0; border: 1px solid var(–rule); display: flex; align-items: center; justify-content: center; font-size: .85rem; }
+.cd-lbl { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 3px; }
+.cd-val { font-size: .8rem; color: var(–ink); line-height: 1.5; }
 .cform { display: flex; flex-direction: column; }
-.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 4px; }
-.fgrp { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
-.fgrp label { font-size: .54rem; letter-spacing: .2em; text-transform: uppercase; color: var(–mid); font-weight: 600; }
-.fgrp input, .fgrp textarea, .fgrp select { background: transparent; border: none; border-bottom: 1.5px solid var(–rule); padding: 10px 0; font-family: var(–sans); font-size: .875rem; color: var(–ink); outline: none; width: 100%; transition: border-color .2s; -webkit-appearance: none; appearance: none; border-radius: 0; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.fgrp { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.fgrp label { font-size: .56rem; letter-spacing: .18em; text-transform: uppercase; color: var(–mid); font-weight: 600; }
+.fgrp input, .fgrp textarea, .fgrp select { background: transparent; border: none; border-bottom: 1px solid var(–rule); padding: 10px 0; font-family: var(–sans); font-size: .82rem; color: var(–ink); outline: none; width: 100%; transition: border-color .2s; appearance: none; -webkit-appearance: none; border-radius: 0; }
 .fgrp input:focus, .fgrp textarea:focus, .fgrp select:focus { border-color: var(–gold); }
-.fgrp textarea { resize: vertical; min-height: 96px; }
-.fsub { background: var(–ink); color: var(–cream); border: none; font-family: var(–sans); font-size: .63rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; padding: 16px 36px; cursor: pointer; margin-top: 6px; align-self: flex-start; transition: background .25s; }
+.fgrp textarea { resize: vertical; min-height: 90px; }
+.fsub { background: var(–ink); color: var(–cream) !important; border: none; font-family: var(–sans); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; padding: 16px 36px; cursor: pointer; margin-top: 8px; align-self: flex-start; transition: background .25s; }
 .fsub:hover { background: var(–gold); }
-.form-success { display: none; background: var(–parchment); border-left: 3px solid var(–gold); padding: 16px 20px; margin-top: 16px; font-size: .82rem; color: var(–ink); }
+.form-success { display: none; background: var(–parchment); border-left: 3px solid var(–gold); padding: 18px 22px; margin-top: 18px; font-size: .8rem; color: var(–ink); }
 
 /* FOOTER */
-footer { background: #0a0907; padding: 60px 56px 32px; }
-.foot-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(184,151,58,.1); }
-.f-logo { font-family: var(–serif); font-size: 1rem; font-weight: bold; letter-spacing: .1em; text-transform: uppercase; color: var(–parchment); margin-bottom: 16px; display: block; }
+footer { background: #0a0a0a; padding: 58px 56px 28px; }
+.foot-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 52px; padding-bottom: 42px; border-bottom: 1px solid rgba(184,151,58,.1); }
+.f-logo { font-family: var(–serif); font-size: 1rem; font-weight: bold; letter-spacing: .09em; text-transform: uppercase; color: var(–parchment); margin-bottom: 14px; display: block; }
 .f-logo span { color: var(–gold); }
-.f-tag { font-size: .72rem; line-height: 1.85; color: rgba(245,242,236,.3); }
-.f-col h4 { font-size: .52rem; letter-spacing: .22em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 18px; }
-.f-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.f-col a { font-size: .72rem; color: rgba(245,242,236,.32); text-decoration: none; transition: color .2s; }
-.f-col a:hover { color: var(–gold); }
-.foot-btm { max-width: 1140px; margin: 24px auto 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-.foot-btm p { font-size: .58rem; color: rgba(245,242,236,.2); line-height: 1.6; }
+.f-tag { font-size: .71rem; line-height: 1.8; color: rgba(245,242,236,.32); }
+.f-col h4 { font-size: .54rem; letter-spacing: .2em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 16px; }
+.f-col ul { display: flex; flex-direction: column; gap: 9px; }
+.f-col a { font-size: .71rem; color: rgba(245,242,236,.34) !important; transition: color .2s; }
+.f-col a:hover { color: var(–gold) !important; }
+.foot-btm { max-width: 1160px; margin: 22px auto 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.foot-btm p { font-size: .58rem; color: rgba(245,242,236,.22); }
 
 /* RESPONSIVE */
-@media (max-width: 860px) {
-nav { padding: 0 20px; }
+@media (max-width: 900px) {
+nav { padding: 16px 20px; }
 .nav-links, .nav-cta { display: none; }
-section { padding: 48px 20px; }
-.hero { grid-template-columns: 1fr; height: auto; min-height: 100svh; }
-.hero-left { padding: 48px 20px 36px; order: 1; }
-.hero-right { min-height: 320px; order: 2; }
-.hero-quote-box { padding: 36px 20px 90px; }
-h1 { font-size: 2.2rem; }
-.about-grid { grid-template-columns: 1fr; gap: 32px; }
+section { padding: 56px 20px; }
+.hero { grid-template-columns: 1fr; min-height: auto; }
+.hero-left { padding: 48px 20px 36px; }
+.hero-right { min-height: 300px; }
+.hero-quote-box { padding: 32px 20px 80px; }
+h1 { font-size: 2.4rem; }
+.about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
 .quote-card { margin-top: 0; }
 .practice-grid { grid-template-columns: 1fr; }
 .pillars { grid-template-columns: 1fr 1fr; }
 .ins-grid { grid-template-columns: 1fr; }
-.contact-grid { grid-template-columns: 1fr; gap: 40px; }
-.frow { grid-template-columns: 1fr; }
 .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-footer { padding: 44px 20px 24px; }
+footer { padding: 40px 20px 24px; }
+.frow { grid-template-columns: 1fr; gap: 0; }
 .foot-btm { flex-direction: column; }
 }
-@media (min-width: 861px) and (max-width: 1080px) {
+@media (min-width: 901px) and (max-width: 1100px) {
 .practice-grid { grid-template-columns: repeat(2, 1fr); }
 .pillars { grid-template-columns: repeat(2, 1fr); }
-nav { padding: 0 28px; }
-section { padding: 80px 28px; }
 }
 </style>
 
@@ -212,14 +203,14 @@ section { padding: 80px 28px; }
   <div class="hero-left">
     <p class="eyebrow">Recalde Law Firm, P.A. &nbsp;&middot;&nbsp; Miami, FL</p>
     <h1>Counsel Built for<br><em>Consequential</em><br>Business Decisions</h1>
-    <p class="hero-desc">We advise founders, investors, and closely held businesses on transactions involving changes in ownership, capital structure, and control &mdash; from formations and financings to acquisitions, restructurings, and exits.</p>
+    <p class="hero-desc">We advise founders, investors, and closely held businesses on transactions involving changes in ownership, capital structure, and control — from formations and financings to acquisitions, restructurings, and exits.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Schedule a Consultation</a>
       <a href="#practice" class="btn-ghost">Explore Practice Areas</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-bg" aria-hidden="true">RLF</div>
+    <div class="hero-bg">RLF</div>
     <div class="hero-quote-box">
       <div class="gold-bar"></div>
       <blockquote>&ldquo;Recalde Law Firm has proven to be highly effective and understands our various legal needs.&rdquo;</blockquote>
@@ -235,39 +226,39 @@ section { padding: 80px 28px; }
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span class="t-item"><span class="t-dot">&#9670;</span>M&amp;A Transactions</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Private Equity</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Fund Formation</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Growth Equity</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>SAFE &amp; Convertible Notes</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Equity Compensation</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Commercial Litigation</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Real Estate Law</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Corporate Governance</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>M&amp;A Transactions</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Private Equity</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Fund Formation</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Growth Equity</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>SAFE &amp; Convertible Notes</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Equity Compensation</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Commercial Litigation</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Real Estate Law</span>
-    <span class="t-item"><span class="t-dot">&#9670;</span>Corporate Governance</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> M&amp;A Transactions</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Private Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Fund Formation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Growth Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> SAFE &amp; Convertible Notes</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Equity Compensation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Commercial Litigation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Real Estate Law</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Corporate Governance</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> M&amp;A Transactions</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Private Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Fund Formation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Growth Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> SAFE &amp; Convertible Notes</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Equity Compensation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Commercial Litigation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Real Estate Law</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Corporate Governance</span>
   </div>
 </div>
 
 <section class="about" id="about">
   <div class="inner about-grid">
-    <div class="about-text sr">
+    <div>
       <p class="sec-tag">About the Firm</p>
       <h2>A Litigation Background Behind Every Transaction</h2>
       <div class="gold-rule"></div>
       <p>I am the founder and president of Recalde Law Firm, P.A. My practice focuses on <strong>business transactions involving changes in ownership, capital structure, or control</strong> &mdash; including formations, financings, acquisitions, restructurings, and exits.</p>
       <p>I represent founders, investors, and closely held businesses across a broad range of transactional matters. My background includes both transactional work and complex commercial litigation &mdash; a perspective that informs how I structure and document transactions, with attention to risk allocation, governance rights, and long-term enforceability.</p>
-      <p>When disputes arise out of business relationships or transactions, I also represent clients in resolving those matters, bringing over <strong>18 years of commercial litigation experience</strong> to complex, high-stakes conflicts.</p>
+      <p>When disputes arise, I also represent clients in resolving those matters, bringing over <strong>18 years of commercial litigation experience</strong> to complex, high-stakes conflicts.</p>
       <p>Since founding the firm in 2008, our consistent focus has been one core objective: protecting our clients&rsquo; interests while helping them move their businesses forward with clarity and confidence.</p>
     </div>
-    <div class="sr d2">
+    <div>
       <div class="quote-card">
         <blockquote>&ldquo;Recalde Law Firm has proven to be highly effective and understands our various legal needs. Their counsel has been invaluable at critical stages of our business.&rdquo;</blockquote>
         <cite>Pablo Palatnik &mdash; VP of Global Ecommerce, DS Laboratories</cite>
@@ -278,54 +269,98 @@ section { padding: 80px 28px; }
 
 <section class="practice" id="practice">
   <div class="inner">
-    <div class="practice-hdr sr">
+    <div class="practice-hdr">
       <p class="sec-tag">Areas of Practice</p>
       <h2>Where We Concentrate Our Work</h2>
     </div>
     <div class="practice-grid">
-      <div class="pc sr"><span class="pc-n">01</span><div class="pc-title">M&amp;A &amp; Business Acquisitions</div><p class="pc-desc">Representing buyers, sellers, and investors in business sales and acquisitions from SMB transactions to complex private equity deals.</p><ul class="pc-list"><li>M&amp;A and SMB acquisitions</li><li>Asset and stock purchase agreements</li><li>Letters of intent and term sheets</li><li>Reps, warranties &amp; indemnification</li><li>Leveraged buyouts &amp; recapitalizations</li></ul><span class="pc-more">Learn More &rarr;</span></div>
-      <div class="pc sr d1"><span class="pc-n">02</span><div class="pc-title">Growth Equity &amp; Venture</div><p class="pc-desc">Advising startups, founders, and investors across all stages of equity financing from pre-seed through Series rounds.</p><ul class="pc-list"><li>Seed, SAFE &amp; convertible notes</li><li>Series A/B/C preferred equity</li><li>Equity compensation &amp; option plans</li><li>Investor rights agreements</li><li>Cap table management</li></ul><span class="pc-more">Learn More &rarr;</span></div>
-      <div class="pc sr d2"><span class="pc-n">03</span><div class="pc-title">Fund Formation &amp; Structures</div><p class="pc-desc">Structuring and forming pooled investment vehicles across asset classes for sponsors and investment managers.</p><ul class="pc-list"><li>Private equity &amp; venture funds</li><li>Hedge fund structures</li><li>Real estate investment vehicles</li><li>Lending strategy funds</li><li>Sponsor-level co-investment structures</li></ul><span class="pc-more">Learn More &rarr;</span></div>
-      <div class="pc sr"><span class="pc-n">04</span><div class="pc-title">Corporate Governance</div><p class="pc-desc">Drafting and negotiating governance documents that define ownership rights, authority, and stakeholder relationships.</p><ul class="pc-list"><li>Operating &amp; shareholder agreements</li><li>Voting arrangements &amp; LPAs</li><li>Partner restructurings &amp; buyouts</li><li>Ownership transitions</li><li>Board governance &amp; consent matters</li></ul><span class="pc-more">Learn More &rarr;</span></div>
-      <div class="pc sr d1"><span class="pc-n">05</span><div class="pc-title">Commercial Litigation</div><p class="pc-desc">Representing clients in complex, multi-jurisdictional commercial disputes with strategic efficiency and decisive advocacy.</p><ul class="pc-list"><li>Business &amp; partnership disputes</li><li>Breach of contract matters</li><li>IP enforcement &amp; infringement</li><li>Post-closing M&amp;A disputes</li><li>18+ years of litigation experience</li></ul><span class="pc-more">Learn More &rarr;</span></div>
-      <div class="pc sr d2"><span class="pc-n">06</span><div class="pc-title">Real Estate Law</div><p class="pc-desc">Handling real estate transactional and litigation matters for investors, businesses, and property owners throughout Florida.</p><ul class="pc-list"><li>Quiet title &amp; easement actions</li><li>Foreclosures &amp; ejectment</li><li>Real estate closings</li><li>Title insurance matters</li><li>Landlord-tenant disputes</li></ul><span class="pc-more">Learn More &rarr;</span></div>
+      <div class="pc"><span class="pc-n">01</span>
+        <div class="pc-title">M&amp;A &amp; Business Acquisitions</div>
+        <p class="pc-desc">Representing buyers, sellers, and investors in business sales and acquisitions from SMB transactions to complex private equity deals.</p>
+        <ul class="pc-list"><li>M&amp;A and SMB acquisitions</li><li>Asset and stock purchase agreements</li><li>Letters of intent and term sheets</li><li>Reps, warranties &amp; indemnification</li><li>Leveraged buyouts &amp; recapitalizations</li></ul>
+        <span class="pc-more">Learn More &rarr;</span>
+      </div>
+      <div class="pc"><span class="pc-n">02</span>
+        <div class="pc-title">Growth Equity &amp; Venture</div>
+        <p class="pc-desc">Advising startups, founders, and investors across all stages of equity financing from pre-seed through Series rounds.</p>
+        <ul class="pc-list"><li>Seed, SAFE &amp; convertible notes</li><li>Series A/B/C preferred equity</li><li>Equity compensation &amp; option plans</li><li>Investor rights agreements</li><li>Cap table management</li></ul>
+        <span class="pc-more">Learn More &rarr;</span>
+      </div>
+      <div class="pc"><span class="pc-n">03</span>
+        <div class="pc-title">Fund Formation &amp; Structures</div>
+        <p class="pc-desc">Structuring and forming pooled investment vehicles across asset classes for sponsors and investment managers.</p>
+        <ul class="pc-list"><li>Private equity &amp; venture funds</li><li>Hedge fund structures</li><li>Real estate investment vehicles</li><li>Lending strategy funds</li><li>Sponsor-level co-investment structures</li></ul>
+        <span class="pc-more">Learn More &rarr;</span>
+      </div>
+      <div class="pc"><span class="pc-n">04</span>
+        <div class="pc-title">Corporate Governance</div>
+        <p class="pc-desc">Drafting and negotiating governance documents that define ownership rights, authority, and stakeholder relationships.</p>
+        <ul class="pc-list"><li>Operating &amp; shareholder agreements</li><li>Voting arrangements &amp; LPAs</li><li>Partner restructurings &amp; buyouts</li><li>Ownership transitions</li><li>Board governance &amp; consent matters</li></ul>
+        <span class="pc-more">Learn More &rarr;</span>
+      </div>
+      <div class="pc"><span class="pc-n">05</span>
+        <div class="pc-title">Commercial Litigation</div>
+        <p class="pc-desc">Representing clients in complex, multi-jurisdictional commercial disputes with strategic efficiency and decisive advocacy.</p>
+        <ul class="pc-list"><li>Business &amp; partnership disputes</li><li>Breach of contract matters</li><li>IP enforcement &amp; infringement</li><li>Post-closing M&amp;A disputes</li><li>18+ years of litigation experience</li></ul>
+        <span class="pc-more">Learn More &rarr;</span>
+      </div>
+      <div class="pc"><span class="pc-n">06</span>
+        <div class="pc-title">Real Estate Law</div>
+        <p class="pc-desc">Handling real estate transactional and litigation matters for investors, businesses, and property owners throughout Florida.</p>
+        <ul class="pc-list"><li>Quiet title &amp; easement actions</li><li>Foreclosures &amp; ejectment</li><li>Real estate closings</li><li>Title insurance matters</li><li>Landlord-tenant disputes</li></ul>
+        <span class="pc-more">Learn More &rarr;</span>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="approach">
   <div class="inner">
-    <div class="sr">
-      <p class="sec-tag">Our Approach</p>
-      <h2>How We Work</h2>
-      <p class="approach-lead">We approach every matter with a practical, business-first mindset. Our role is not just to document transactions or manage disputes &mdash; it is to help clients understand their options, assess risk, and make decisions aligned with their long-term goals.</p>
-    </div>
+    <p class="sec-tag">Our Approach</p>
+    <h2>How We Work</h2>
+    <div class="gold-rule" style="background:var(--gold-light)"></div>
+    <p class="approach-lead">We approach every matter with a practical, business-first mindset. Our role is not just to document transactions or manage disputes &mdash; it is to help clients understand their options, assess risk, and make decisions aligned with their long-term goals.</p>
     <div class="pillars">
-      <div class="pillar sr"><div class="pillar-ico">&#9878;</div><h3>Business-First Judgment</h3><p>Legal strategy grounded in commercial reality. We understand the business context before advising on structure.</p></div>
-      <div class="pillar sr d1"><div class="pillar-ico">&#9670;</div><h3>Transaction-Tested Drafting</h3><p>Documents built to withstand scrutiny &mdash; risk allocation, governance rights, and enforceability built in from the start.</p></div>
-      <div class="pillar sr d2"><div class="pillar-ico">&#9651;</div><h3>Proactive Risk Planning</h3><p>We emphasize proactive planning and dispute avoidance. When disputes arise, we are prepared to act decisively.</p></div>
-      <div class="pillar sr d3"><div class="pillar-ico">&#9711;</div><h3>Direct Client Access</h3><p>Clients work directly with counsel &mdash; not delegated to junior associates on critical matters.</p></div>
+      <div class="pillar"><div class="pillar-ico">&#9878;</div><h3>Business-First Judgment</h3><p>Legal strategy grounded in commercial reality. We understand the business context before advising on structure.</p></div>
+      <div class="pillar"><div class="pillar-ico">&#9670;</div><h3>Transaction-Tested Drafting</h3><p>Documents built to withstand scrutiny &mdash; risk allocation, governance rights, and enforceability built in from the start.</p></div>
+      <div class="pillar"><div class="pillar-ico">&#9651;</div><h3>Proactive Risk Planning</h3><p>We emphasize proactive planning and dispute avoidance. When disputes arise, we are prepared to act decisively.</p></div>
+      <div class="pillar"><div class="pillar-ico">&#9711;</div><h3>Direct Client Access</h3><p>Clients work directly with counsel &mdash; not delegated to junior associates on critical matters.</p></div>
     </div>
   </div>
 </section>
 
 <section class="insights" id="insights">
   <div class="inner">
-    <div class="ins-hdr sr">
+    <div class="ins-hdr">
       <div><p class="sec-tag">Latest Insights</p><h2>From the Blog</h2></div>
       <a href="https://recaldelaw.com/blog/" target="_blank" rel="noopener">View All Articles &rarr;</a>
     </div>
     <div class="ins-grid">
-      <div class="ins-card feat sr"><p class="ins-cat">Exit Preparation</p><div class="ins-title">What Buyers Actually Look for When They Review Your IP</div><p class="ins-blurb">Most founders assume that having registered trademarks and patents means their intellectual property is in order. It&rsquo;s a reasonable assumption &mdash; but an incomplete one. Sophisticated buyers evaluate far more than registration status during diligence.</p><span class="ins-meta">Rafael Recalde &nbsp;&middot;&nbsp; March 2, 2026</span></div>
-      <div class="ins-card sr d1"><p class="ins-cat">Fund Structuring</p><div class="ins-title">When Derivatives Trigger a Second Regulatory Layer</div><p class="ins-blurb">A common assumption in pooled vehicle structuring is that once the securities framework is addressed, the regulatory work is largely complete. It isn&rsquo;t always.</p><span class="ins-meta">Rafael Recalde &nbsp;&middot;&nbsp; Feb 22, 2026</span></div>
-      <div class="ins-card sr d2"><p class="ins-cat">Growth Equity</p><div class="ins-title">SAFEs &amp; Convertible Notes: Tax Treatment and Capital Gains</div><p class="ins-blurb">Understanding the tax implications of early-stage instruments before documents are signed can meaningfully affect founder outcomes at exit.</p><span class="ins-meta">Rafael Recalde &nbsp;&middot;&nbsp; Feb 2026</span></div>
+      <div class="ins-card feat">
+        <p class="ins-cat">Exit Preparation</p>
+        <div class="ins-title">What Buyers Actually Look for When They Review Your IP</div>
+        <p class="ins-blurb">Most founders assume that having registered trademarks and patents means their intellectual property is in order. It&rsquo;s a reasonable assumption &mdash; but an incomplete one. Sophisticated buyers evaluate far more than registration status during diligence.</p>
+        <span class="ins-meta">Rafael Recalde &nbsp;&middot;&nbsp; March 2, 2026</span>
+      </div>
+      <div class="ins-card">
+        <p class="ins-cat">Fund Structuring</p>
+        <div class="ins-title">When Derivatives Trigger a Second Regulatory Layer</div>
+        <p class="ins-blurb">A common assumption in pooled vehicle structuring is that once the securities framework is addressed, the regulatory work is largely complete.</p>
+        <span class="ins-meta">Rafael Recalde &nbsp;&middot;&nbsp; Feb 22, 2026</span>
+      </div>
+      <div class="ins-card">
+        <p class="ins-cat">Growth Equity</p>
+        <div class="ins-title">SAFEs &amp; Convertible Notes: Tax Treatment and Capital Gains</div>
+        <p class="ins-blurb">Understanding the tax implications of early-stage financing instruments before documents are signed can meaningfully affect founder outcomes at exit.</p>
+        <span class="ins-meta">Rafael Recalde &nbsp;&middot;&nbsp; Feb 2026</span>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="inner contact-grid">
-    <div class="contact-left sr">
+    <div class="contact-left">
       <p class="sec-tag">Contact the Firm</p>
       <h2>Let&rsquo;s Discuss Your Matter</h2>
       <div class="gold-rule"></div>
@@ -334,22 +369,29 @@ section { padding: 80px 28px; }
       <div class="cdetail"><div class="cico">&#128222;</div><div><p class="cd-lbl">Phone</p><p class="cd-val">(305) 792-9100</p></div></div>
       <div class="cdetail"><div class="cico">&#9993;</div><div><p class="cd-lbl">Email</p><p class="cd-val">info@recaldelaw.com</p></div></div>
     </div>
-    <form class="cform sr d1" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+    <form class="cform" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
       <input type="hidden" name="form-name" value="contact">
-      <p style="display:none"><label>Do not fill: <input name="bot-field"></label></p>
       <div class="frow">
-        <div class="fgrp"><label for="fn">Full Name</label><input id="fn" type="text" name="name" placeholder="Your name" required></div>
-        <div class="fgrp"><label for="fe">Email Address</label><input id="fe" type="email" name="email" placeholder="you@company.com" required></div>
+        <div class="fgrp"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required></div>
+        <div class="fgrp"><label>Email Address</label><input type="email" name="email" placeholder="you@company.com" required></div>
       </div>
       <div class="frow">
-        <div class="fgrp"><label for="fp">Phone</label><input id="fp" type="tel" name="phone" placeholder="(305) 000-0000"></div>
-        <div class="fgrp"><label for="fa">Area of Interest</label>
-          <select id="fa" name="area"><option value="">Select a practice area</option><option>M&amp;A / Business Acquisition</option><option>Growth Equity / Venture</option><option>Fund Formation</option><option>Corporate Governance</option><option>Commercial Litigation</option><option>Real Estate</option></select>
+        <div class="fgrp"><label>Phone</label><input type="tel" name="phone" placeholder="(305) 000-0000"></div>
+        <div class="fgrp"><label>Area of Interest</label>
+          <select name="area">
+            <option value="">Select a practice area</option>
+            <option>M&amp;A / Business Acquisition</option>
+            <option>Growth Equity / Venture</option>
+            <option>Fund Formation</option>
+            <option>Corporate Governance</option>
+            <option>Commercial Litigation</option>
+            <option>Real Estate</option>
+          </select>
         </div>
       </div>
-      <div class="fgrp"><label for="fm">Tell Us About Your Matter</label><textarea id="fm" name="message" placeholder="Briefly describe the nature of your legal matter..." required></textarea></div>
+      <div class="fgrp"><label>Tell Us About Your Matter</label><textarea name="message" placeholder="Briefly describe the nature of your legal matter..." required></textarea></div>
       <button type="submit" class="fsub">Send Inquiry</button>
-      <div class="form-success" id="fs">Thank you &mdash; your inquiry has been submitted. We will be in touch shortly.</div>
+      <div class="form-success" id="formSuccess">Thank you &mdash; your inquiry has been submitted. We will be in touch shortly.</div>
     </form>
   </div>
 </section>
@@ -371,19 +413,9 @@ section { padding: 80px 28px; }
 </footer>
 
 <script>
-// Scroll reveal
-var items = document.querySelectorAll('.sr');
-var obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
-  });
-}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
-items.forEach(function(el) { obs.observe(el); });
-
-// Contact form
 function handleSubmit(e) {
   e.preventDefault();
-  document.getElementById('fs').style.display = 'block';
+  document.getElementById('formSuccess').style.display = 'block';
   e.target.reset();
 }
 </script>
