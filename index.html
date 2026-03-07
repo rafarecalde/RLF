@@ -55,7 +55,7 @@ h1 em { font-style: italic; color: var(–gold); }
 
 /* TICKER */
 .ticker { background: var(–ink); padding: 13px 0; overflow: hidden; }
-.ticker-track { display: inline-block; white-space: nowrap; animation: roll 32s linear infinite; }
+.ticker-track { display: inline-block; white-space: nowrap; animation: roll 44s linear infinite; }
 .t-item { display: inline-block; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,242,236,.38); padding: 0 32px; font-weight: 600; }
 .t-dot { color: var(–gold); }
 @keyframes roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -90,11 +90,23 @@ h2 { font-family: var(–serif); font-size: clamp(1.9rem, 2.8vw, 2.9rem); font-w
 .pc:hover .pc-title { color: var(–parchment); }
 .pc-desc { font-size: .74rem; line-height: 1.85; color: var(–mid); margin-bottom: 18px; position: relative; z-index: 1; transition: color .3s; }
 .pc:hover .pc-desc { color: rgba(245,242,236,.5); }
-.pc-list { margin-bottom: 26px; position: relative; z-index: 1; }
+.pc-list { margin-bottom: 20px; position: relative; z-index: 1; }
 .pc-list li { font-size: .69rem; color: var(–mid); padding: 5px 0; border-top: 1px solid var(–rule); display: flex; align-items: flex-start; gap: 8px; transition: color .3s, border-color .3s; }
 .pc:hover .pc-list li { color: rgba(245,242,236,.48); border-color: rgba(184,151,58,.12); }
 .pc-list li::before { content: ‘—’; color: var(–gold); flex-shrink: 0; }
-.pc-more { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(–gold); font-weight: 600; position: relative; z-index: 1; }
+
+/* EXPAND */
+.pc-expand { max-height: 0; overflow: hidden; transition: max-height .5s ease, opacity .4s ease; opacity: 0; position: relative; z-index: 1; }
+.pc-expand.open { max-height: 700px; opacity: 1; }
+.pc-expand-inner { padding: 16px 0 8px; border-top: 1px solid rgba(184,151,58,.25); margin-top: 4px; }
+.pc-expand-inner p { font-size: .72rem; line-height: 1.88; color: var(–mid); margin-bottom: 10px; }
+.pc:hover .pc-expand-inner p { color: rgba(245,242,236,.5); }
+.pc-expand-inner p:last-child { margin-bottom: 0; }
+
+.pc-more { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(–gold); font-weight: 600; position: relative; z-index: 1; cursor: pointer; display: flex; align-items: center; gap: 7px; background: none; border: none; font-family: var(–sans); padding: 0; margin-bottom: 0; margin-top: 16px; }
+.pc-more:hover { opacity: .75; }
+.pc-arrow { display: inline-block; transition: transform .35s ease; font-style: normal; }
+.pc-more.open .pc-arrow { transform: rotate(90deg); }
 
 /* APPROACH */
 .approach { background: var(–ink); }
@@ -165,10 +177,17 @@ nav { padding: 16px 20px; }
 .nav-links, .nav-cta { display: none; }
 section { padding: 56px 20px; }
 .hero { grid-template-columns: 1fr; min-height: auto; }
-.hero-left { padding: 48px 20px 36px; }
-.hero-right { min-height: 300px; }
-.hero-quote-box { padding: 32px 20px 80px; }
-h1 { font-size: 2.4rem; }
+.hero-left { padding: 52px 24px 44px; background: #171410; }
+.hero-left .eyebrow { color: var(–gold); }
+.hero-left h1 { font-size: 2.6rem; color: var(–parchment) !important; }
+.hero-left h1 em { color: var(–gold); }
+.hero-left .hero-desc { color: rgba(245,242,236,.65) !important; max-width: 100%; }
+.hero-right { min-height: 260px; }
+.hero-quote-box { padding: 36px 24px 88px; }
+.hero-actions { flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 8px; }
+.btn-primary { display: block !important; background: var(–gold) !important; color: var(–ink) !important; padding: 16px 28px !important; font-size: .7rem !important; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; width: auto; }
+.btn-ghost { display: block !important; color: rgba(245,242,236,.6) !important; font-size: .7rem !important; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; border-bottom: 1px solid rgba(245,242,236,.3) !important; padding-bottom: 3px; }
+h1 { font-size: 2.6rem; }
 .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
 .quote-card { margin-top: 0; }
 .practice-grid { grid-template-columns: 1fr; }
@@ -203,7 +222,7 @@ footer { padding: 40px 20px 24px; }
   <div class="hero-left">
     <p class="eyebrow">Recalde Law Firm, P.A. &nbsp;&middot;&nbsp; Miami, FL</p>
     <h1>Counsel Built for<br><em>Consequential</em><br>Business Decisions</h1>
-    <p class="hero-desc">We advise founders, investors, and closely held businesses on transactions involving changes in ownership, capital structure, and control — from formations and financings to acquisitions, restructurings, and exits.</p>
+    <p class="hero-desc">We advise founders, investors, family offices, and closely held businesses on transactions involving changes in ownership, capital structure, and control — from formations and financings to acquisitions, restructurings, and exits.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Schedule a Consultation</a>
       <a href="#practice" class="btn-ghost">Explore Practice Areas</a>
@@ -228,8 +247,12 @@ footer { padding: 40px 20px 24px; }
   <div class="ticker-track">
     <span class="t-item"><span class="t-dot">&#9670;</span> M&amp;A Transactions</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Private Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Family Office Counsel</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Fund Formation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> RIA Structures</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Trust &amp; Estate Planning</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Growth Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Private Banking Transactions</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> SAFE &amp; Convertible Notes</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Equity Compensation</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Commercial Litigation</span>
@@ -237,8 +260,12 @@ footer { padding: 40px 20px 24px; }
     <span class="t-item"><span class="t-dot">&#9670;</span> Corporate Governance</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> M&amp;A Transactions</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Private Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Family Office Counsel</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Fund Formation</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> RIA Structures</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Trust &amp; Estate Planning</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Growth Equity</span>
+    <span class="t-item"><span class="t-dot">&#9670;</span> Private Banking Transactions</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> SAFE &amp; Convertible Notes</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Equity Compensation</span>
     <span class="t-item"><span class="t-dot">&#9670;</span> Commercial Litigation</span>
@@ -251,12 +278,12 @@ footer { padding: 40px 20px 24px; }
   <div class="inner about-grid">
     <div>
       <p class="sec-tag">About the Firm</p>
-      <h2>A Litigation Background Behind Every Transaction</h2>
+      <h2>Sophisticated Counsel for Complex Transactions</h2>
       <div class="gold-rule"></div>
-      <p>I am the founder and president of Recalde Law Firm, P.A. My practice focuses on <strong>business transactions involving changes in ownership, capital structure, or control</strong> &mdash; including formations, financings, acquisitions, restructurings, and exits.</p>
-      <p>I represent founders, investors, and closely held businesses across a broad range of transactional matters. My background includes both transactional work and complex commercial litigation &mdash; a perspective that informs how I structure and document transactions, with attention to risk allocation, governance rights, and long-term enforceability.</p>
-      <p>When disputes arise, I also represent clients in resolving those matters, bringing over <strong>18 years of commercial litigation experience</strong> to complex, high-stakes conflicts.</p>
-      <p>Since founding the firm in 2008, our consistent focus has been one core objective: protecting our clients&rsquo; interests while helping them move their businesses forward with clarity and confidence.</p>
+      <p>Recalde Law Firm, P.A. is a Miami-based firm focused on <strong>high-stakes business transactions, private investment structures, and complex commercial disputes</strong>. Since our founding in 2008, we have built a practice centered on one objective: providing sophisticated legal counsel to clients whose decisions carry real economic consequence.</p>
+      <p>Our client base spans founders and operators navigating ownership transitions, fund sponsors and investment managers building pooled investment vehicles, and <strong>family offices, RIAs, and private banking clients</strong> requiring discreet, transaction-tested counsel across M&amp;A, fund formation, trust structures, and wealth-adjacent legal matters.</p>
+      <p>The firm was founded by <strong>Rafael Recalde</strong>, whose background spans over 18 years of complex commercial litigation and transactional work. That dual foundation &mdash; understanding not only how transactions are structured, but how they are contested when things go wrong &mdash; informs how the firm approaches every engagement: with precision in drafting, clarity on risk allocation, and a long view toward enforceability.</p>
+      <p>Our attorneys work directly with clients on matters that count. We do not delegate principal relationships. Whether advising a sponsor on a fund's LPA, a family office on a private credit structure, or a founder on exit terms, <strong>every client receives the quality of attention</strong> that has defined the firm since its inception.</p>
     </div>
     <div>
       <div class="quote-card">
@@ -274,43 +301,125 @@ footer { padding: 40px 20px 24px; }
       <h2>Where We Concentrate Our Work</h2>
     </div>
     <div class="practice-grid">
-      <div class="pc"><span class="pc-n">01</span>
-        <div class="pc-title">M&amp;A &amp; Business Acquisitions</div>
-        <p class="pc-desc">Representing buyers, sellers, and investors in business sales and acquisitions from SMB transactions to complex private equity deals.</p>
-        <ul class="pc-list"><li>M&amp;A and SMB acquisitions</li><li>Asset and stock purchase agreements</li><li>Letters of intent and term sheets</li><li>Reps, warranties &amp; indemnification</li><li>Leveraged buyouts &amp; recapitalizations</li></ul>
-        <span class="pc-more">Learn More &rarr;</span>
-      </div>
-      <div class="pc"><span class="pc-n">02</span>
-        <div class="pc-title">Growth Equity &amp; Venture</div>
-        <p class="pc-desc">Advising startups, founders, and investors across all stages of equity financing from pre-seed through Series rounds.</p>
-        <ul class="pc-list"><li>Seed, SAFE &amp; convertible notes</li><li>Series A/B/C preferred equity</li><li>Equity compensation &amp; option plans</li><li>Investor rights agreements</li><li>Cap table management</li></ul>
-        <span class="pc-more">Learn More &rarr;</span>
-      </div>
-      <div class="pc"><span class="pc-n">03</span>
-        <div class="pc-title">Fund Formation &amp; Structures</div>
-        <p class="pc-desc">Structuring and forming pooled investment vehicles across asset classes for sponsors and investment managers.</p>
-        <ul class="pc-list"><li>Private equity &amp; venture funds</li><li>Hedge fund structures</li><li>Real estate investment vehicles</li><li>Lending strategy funds</li><li>Sponsor-level co-investment structures</li></ul>
-        <span class="pc-more">Learn More &rarr;</span>
-      </div>
-      <div class="pc"><span class="pc-n">04</span>
-        <div class="pc-title">Corporate Governance</div>
-        <p class="pc-desc">Drafting and negotiating governance documents that define ownership rights, authority, and stakeholder relationships.</p>
-        <ul class="pc-list"><li>Operating &amp; shareholder agreements</li><li>Voting arrangements &amp; LPAs</li><li>Partner restructurings &amp; buyouts</li><li>Ownership transitions</li><li>Board governance &amp; consent matters</li></ul>
-        <span class="pc-more">Learn More &rarr;</span>
-      </div>
-      <div class="pc"><span class="pc-n">05</span>
-        <div class="pc-title">Commercial Litigation</div>
-        <p class="pc-desc">Representing clients in complex, multi-jurisdictional commercial disputes with strategic efficiency and decisive advocacy.</p>
-        <ul class="pc-list"><li>Business &amp; partnership disputes</li><li>Breach of contract matters</li><li>IP enforcement &amp; infringement</li><li>Post-closing M&amp;A disputes</li><li>18+ years of litigation experience</li></ul>
-        <span class="pc-more">Learn More &rarr;</span>
-      </div>
-      <div class="pc"><span class="pc-n">06</span>
-        <div class="pc-title">Real Estate Law</div>
-        <p class="pc-desc">Handling real estate transactional and litigation matters for investors, businesses, and property owners throughout Florida.</p>
-        <ul class="pc-list"><li>Quiet title &amp; easement actions</li><li>Foreclosures &amp; ejectment</li><li>Real estate closings</li><li>Title insurance matters</li><li>Landlord-tenant disputes</li></ul>
-        <span class="pc-more">Learn More &rarr;</span>
+
+```
+  <div class="pc"><span class="pc-n">01</span>
+    <div class="pc-title">M&amp;A &amp; Business Acquisitions</div>
+    <p class="pc-desc">Representing buyers, sellers, and investors in business sales and acquisitions from SMB transactions to complex private equity deals.</p>
+    <ul class="pc-list">
+      <li>M&amp;A and SMB acquisitions</li>
+      <li>Asset and stock purchase agreements</li>
+      <li>Letters of intent and term sheets</li>
+      <li>Reps, warranties &amp; indemnification</li>
+      <li>Leveraged buyouts &amp; recapitalizations</li>
+    </ul>
+    <div class="pc-expand" id="exp-01">
+      <div class="pc-expand-inner">
+        <p>Our M&amp;A practice covers the full transaction lifecycle — from early-stage structuring and due diligence through closing and post-closing integration. We represent strategic buyers, financial sponsors, family office acquirers, and sellers across industries, bringing litigation-tested judgment to every negotiation. We are equally fluent in asset deals, stock acquisitions, and complex recapitalizations that blend equity, seller financing, and institutional debt.</p>
+        <p>When counterparties are sophisticated and economic stakes are real, clients turn to us for more than template documents. We structure deals with an eye toward what happens if representations prove false, if earnouts are disputed, or if indemnification provisions are ultimately tested in court.</p>
       </div>
     </div>
+    <button class="pc-more" onclick="toggleExpand('exp-01',this)">Learn More <span class="pc-arrow">&#8594;</span></button>
+  </div>
+
+  <div class="pc"><span class="pc-n">02</span>
+    <div class="pc-title">Growth Equity &amp; Venture</div>
+    <p class="pc-desc">Advising startups, founders, and investors across all stages of equity financing from pre-seed through Series rounds.</p>
+    <ul class="pc-list">
+      <li>Seed, SAFE &amp; convertible notes</li>
+      <li>Series A/B/C preferred equity</li>
+      <li>Equity compensation &amp; option plans</li>
+      <li>Investor rights agreements</li>
+      <li>Cap table management</li>
+    </ul>
+    <div class="pc-expand" id="exp-02">
+      <div class="pc-expand-inner">
+        <p>We advise founders and investors across the full spectrum of early- and growth-stage financing. Our work covers instrument selection — SAFEs, convertible notes, and priced rounds — as well as the downstream governance implications each carries. We help founders understand not just the documents they are signing, but the rights they are granting and the constraints those rights impose at Series A and beyond.</p>
+        <p>For institutional and family office investors entering venture positions, we structure preferred equity terms, pro-rata rights, anti-dilution protections, and co-investment arrangements designed to protect capital without creating governance gridlock that undermines the investment thesis.</p>
+      </div>
+    </div>
+    <button class="pc-more" onclick="toggleExpand('exp-02',this)">Learn More <span class="pc-arrow">&#8594;</span></button>
+  </div>
+
+  <div class="pc"><span class="pc-n">03</span>
+    <div class="pc-title">Fund Formation &amp; Structures</div>
+    <p class="pc-desc">Structuring and forming pooled investment vehicles across asset classes for sponsors, RIAs, and investment managers.</p>
+    <ul class="pc-list">
+      <li>Private equity &amp; venture funds</li>
+      <li>Hedge fund structures</li>
+      <li>Real estate investment vehicles</li>
+      <li>Lending strategy funds</li>
+      <li>Sponsor-level co-investment structures</li>
+    </ul>
+    <div class="pc-expand" id="exp-03">
+      <div class="pc-expand-inner">
+        <p>We form and structure pooled investment vehicles for first-time sponsors and established managers alike. Our fund formation work covers the complete documentation set — limited partnership agreements, subscription documents, private placement memoranda, side letters, and management company structures — tailored to each strategy's investor base, asset class, and regulatory profile.</p>
+        <p>We work closely with RIAs, family offices establishing internal investment vehicles, and sponsors deploying capital across private credit, real estate, and equity strategies. Where derivatives, multi-jurisdictional investors, or specific asset classes trigger secondary regulatory considerations, we coordinate across the full framework to ensure the structure is defensible from day one.</p>
+      </div>
+    </div>
+    <button class="pc-more" onclick="toggleExpand('exp-03',this)">Learn More <span class="pc-arrow">&#8594;</span></button>
+  </div>
+
+  <div class="pc"><span class="pc-n">04</span>
+    <div class="pc-title">Corporate Governance</div>
+    <p class="pc-desc">Drafting and negotiating governance documents that define ownership rights, authority, and stakeholder relationships.</p>
+    <ul class="pc-list">
+      <li>Operating &amp; shareholder agreements</li>
+      <li>Voting arrangements &amp; LPAs</li>
+      <li>Partner restructurings &amp; buyouts</li>
+      <li>Ownership transitions</li>
+      <li>Board governance &amp; consent matters</li>
+    </ul>
+    <div class="pc-expand" id="exp-04">
+      <div class="pc-expand-inner">
+        <p>Governance disputes are among the most expensive and operationally disruptive events a business can face. We help clients get the documents right before those moments arise — drafting operating agreements, shareholder agreements, and partnership documents that clearly allocate authority, anticipate transition scenarios, and hold up under adversarial scrutiny.</p>
+        <p>We regularly advise on partner restructurings, ownership buyouts, and succession frameworks for family-owned businesses, multi-generational family offices, and closely held operating companies where the stakes of an ambiguous agreement are existential. Good governance documents are not a cost — they are a long-term capital protection strategy.</p>
+      </div>
+    </div>
+    <button class="pc-more" onclick="toggleExpand('exp-04',this)">Learn More <span class="pc-arrow">&#8594;</span></button>
+  </div>
+
+  <div class="pc"><span class="pc-n">05</span>
+    <div class="pc-title">Commercial Litigation</div>
+    <p class="pc-desc">Representing clients in complex, multi-jurisdictional commercial disputes with strategic efficiency and decisive advocacy.</p>
+    <ul class="pc-list">
+      <li>Business &amp; partnership disputes</li>
+      <li>Breach of contract matters</li>
+      <li>IP enforcement &amp; infringement</li>
+      <li>Post-closing M&amp;A disputes</li>
+      <li>18+ years of litigation experience</li>
+    </ul>
+    <div class="pc-expand" id="exp-05">
+      <div class="pc-expand-inner">
+        <p>When transactions break down or business relationships collapse, we are prepared to move decisively. Our litigation practice covers breach of contract, fiduciary duty claims, post-closing M&amp;A disputes, IP enforcement, and complex multi-party business conflicts. Our founder's 18+ years of commercial litigation experience means we assess cases with candor, manage strategy with discipline, and understand what courts actually look for in contested matters.</p>
+        <p>For clients who retain us on the transactional side, our in-house litigation capability provides continuity when disputes arise — a firm that already understands the deal history, the documents, and the economic stakes, without a costly and disruptive handoff to outside counsel unfamiliar with the underlying transaction.</p>
+      </div>
+    </div>
+    <button class="pc-more" onclick="toggleExpand('exp-05',this)">Learn More <span class="pc-arrow">&#8594;</span></button>
+  </div>
+
+  <div class="pc"><span class="pc-n">06</span>
+    <div class="pc-title">Real Estate Law</div>
+    <p class="pc-desc">Handling real estate transactional and litigation matters for investors, businesses, and property owners throughout Florida.</p>
+    <ul class="pc-list">
+      <li>Quiet title &amp; easement actions</li>
+      <li>Foreclosures &amp; ejectment</li>
+      <li>Real estate closings</li>
+      <li>Title insurance matters</li>
+      <li>Landlord-tenant disputes</li>
+    </ul>
+    <div class="pc-expand" id="exp-06">
+      <div class="pc-expand-inner">
+        <p>Our real estate practice serves institutional investors, private equity sponsors, family office portfolios, and individual property owners navigating complex title, transactional, and dispute matters throughout Florida. We handle the full range of real estate legal work — from closings and title insurance to contested quiet title actions, foreclosure proceedings, and ejectment matters.</p>
+        <p>For clients holding real estate within a broader investment portfolio or business structure, we coordinate the property-level legal work alongside the entity and ownership structuring considerations that govern the underlying vehicle — providing integrated counsel rather than siloed real estate advice disconnected from the larger picture.</p>
+      </div>
+    </div>
+    <button class="pc-more" onclick="toggleExpand('exp-06',this)">Learn More <span class="pc-arrow">&#8594;</span></button>
+  </div>
+
+</div>
+```
+
   </div>
 </section>
 
@@ -324,7 +433,7 @@ footer { padding: 40px 20px 24px; }
       <div class="pillar"><div class="pillar-ico">&#9878;</div><h3>Business-First Judgment</h3><p>Legal strategy grounded in commercial reality. We understand the business context before advising on structure.</p></div>
       <div class="pillar"><div class="pillar-ico">&#9670;</div><h3>Transaction-Tested Drafting</h3><p>Documents built to withstand scrutiny &mdash; risk allocation, governance rights, and enforceability built in from the start.</p></div>
       <div class="pillar"><div class="pillar-ico">&#9651;</div><h3>Proactive Risk Planning</h3><p>We emphasize proactive planning and dispute avoidance. When disputes arise, we are prepared to act decisively.</p></div>
-      <div class="pillar"><div class="pillar-ico">&#9711;</div><h3>Direct Client Access</h3><p>Clients work directly with counsel &mdash; not delegated to junior associates on critical matters.</p></div>
+      <div class="pillar"><div class="pillar-ico">&#9711;</div><h3>Direct Principal Access</h3><p>Clients work directly with senior counsel &mdash; not delegated to junior associates on critical matters.</p></div>
     </div>
   </div>
 </section>
@@ -364,7 +473,7 @@ footer { padding: 40px 20px 24px; }
       <p class="sec-tag">Contact the Firm</p>
       <h2>Let&rsquo;s Discuss Your Matter</h2>
       <div class="gold-rule"></div>
-      <p>We provide businesses with the legal support they need to thrive. If you are facing a transaction, a governance question, or a dispute &mdash; reach out to discuss how we can help.</p>
+      <p>We provide founders, investors, and family offices with the legal support they need to move forward with confidence. If you are facing a transaction, a governance question, or a dispute &mdash; reach out to discuss how we can help.</p>
       <div class="cdetail"><div class="cico">&#128205;</div><div><p class="cd-lbl">Office</p><p class="cd-val">1221 Brickell Ave, Suite 900<br>Miami, FL 33131</p></div></div>
       <div class="cdetail"><div class="cico">&#128222;</div><div><p class="cd-lbl">Phone</p><p class="cd-val">(305) 792-9100</p></div></div>
       <div class="cdetail"><div class="cico">&#9993;</div><div><p class="cd-lbl">Email</p><p class="cd-val">info@recaldelaw.com</p></div></div>
@@ -383,6 +492,7 @@ footer { padding: 40px 20px 24px; }
             <option>M&amp;A / Business Acquisition</option>
             <option>Growth Equity / Venture</option>
             <option>Fund Formation</option>
+            <option>Family Office / RIA</option>
             <option>Corporate Governance</option>
             <option>Commercial Litigation</option>
             <option>Real Estate</option>
@@ -400,23 +510,40 @@ footer { padding: 40px 20px 24px; }
   <div class="foot-grid">
     <div>
       <span class="f-logo">Recalde<span>.</span>&nbsp;Law</span>
-      <p class="f-tag">Recalde Law Firm, P.A. is a Florida-based business and real estate law firm focused on private equity, M&amp;A, fund formation, growth equity, commercial litigation, and real estate transactions. Founded 2008.</p>
+      <p class="f-tag">Recalde Law Firm, P.A. is a Florida-based business and real estate law firm focused on private equity, M&amp;A, fund formation, growth equity, family office counsel, RIA structures, commercial litigation, and real estate transactions. Founded 2008.</p>
     </div>
     <div class="f-col"><h4>Navigate</h4><ul><li><a href="#about">About</a></li><li><a href="#practice">Practice Areas</a></li><li><a href="#insights">Blog</a></li><li><a href="#contact">Contact</a></li></ul></div>
-    <div class="f-col"><h4>Practice Areas</h4><ul><li><a href="#practice">M&amp;A &amp; Acquisitions</a></li><li><a href="#practice">Growth Equity &amp; VC</a></li><li><a href="#practice">Fund Formation</a></li><li><a href="#practice">Corporate Governance</a></li><li><a href="#practice">Litigation</a></li><li><a href="#practice">Real Estate</a></li></ul></div>
+    <div class="f-col"><h4>Practice Areas</h4><ul><li><a href="#practice">M&amp;A &amp; Acquisitions</a></li><li><a href="#practice">Growth Equity &amp; VC</a></li><li><a href="#practice">Fund Formation</a></li><li><a href="#practice">Family Office / RIA</a></li><li><a href="#practice">Litigation</a></li><li><a href="#practice">Real Estate</a></li></ul></div>
     <div class="f-col"><h4>Office</h4><ul><li><a href="tel:3057929100">(305) 792-9100</a></li><li><a href="mailto:info@recaldelaw.com">info@recaldelaw.com</a></li><li><a href="#contact">1221 Brickell Ave, Suite 900</a></li><li><a href="#contact">Miami, FL 33131</a></li></ul></div>
   </div>
   <div class="foot-btm">
     <p>&copy; 2026 Recalde Law Firm, P.A. All rights reserved. Attorney Advertising.</p>
-    <p>Florida Bar &nbsp;&middot;&nbsp; No attorney-client relationship is formed by visiting this site.</p>
+    <p>Florida Bar &nbsp;&middot;&nbsp; No attorney-client relationship is formed by use of this website.</p>
   </div>
 </footer>
 
 <script>
+function toggleExpand(id, btn) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.pc-arrow').innerHTML = isOpen ? '&#8594;' : '&#8595;';
+}
+
 function handleSubmit(e) {
   e.preventDefault();
-  document.getElementById('formSuccess').style.display = 'block';
-  e.target.reset();
+  const form = e.target;
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  }).then(() => {
+    document.getElementById('formSuccess').style.display = 'block';
+    form.reset();
+  }).catch(() => {
+    document.getElementById('formSuccess').style.display = 'block';
+  });
 }
 </script>
 
